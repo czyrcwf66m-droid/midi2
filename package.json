@@ -1,0 +1,28 @@
+{
+  "name": "partition-animee-midi",
+  "productName": "Partition animée MIDI",
+  "version": "1.0.0",
+  "description": "Lecteur MIDI animé avec export vidéo",
+  "main": "main.js",
+  "author": "Vous",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.midianimation.desktop",
+    "productName": "Partition animée MIDI",
+    "files": ["main.js", "preload.js", "index.html", "package.json"],
+    "asarUnpack": ["node_modules/ffmpeg-static/**"],
+    "win": { "icon": "build/icon.ico", "target": ["nsis", "portable"] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true },
+    "artifactName": "${productName}-${version}-${target}.${ext}"
+  }
+}
